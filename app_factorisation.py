@@ -480,7 +480,7 @@ if "polynome" in st.session_state:
         st.session_state.historique.append({
             #"Niveau": niveau,
             "Question": sympy_to_csv(poly),#f"${sp.latex(poly)}$",
-            "Réponse élève": reponse,
+            "Réponse élève": sympy_to_csv(reponse),
             "Bonne réponse": sympy_to_csv(sp.factor(poly)),#f"${sp.latex(sp.factor(poly))}$",
             "Correct": "✅" if resultat == "correct" else "❌"
         })
