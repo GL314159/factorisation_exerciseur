@@ -437,7 +437,7 @@ def sympy_to_csv(expr):
 # Affichage du polynôme
 if "polynome" in st.session_state:
     poly = st.session_state["polynome"]
-    st.markdown(f"#### Factorisez au maximum sur $\\footnotesize\\mathbb{{Z}} : \\;\\;\\;{sp.latex(poly)}$")
+    st.markdown(f"##### Factorisez au maximum sur $\\footnotesize\\mathbb{{Z}} : \\;\\;\\;{sp.latex(poly)}$")
     # pas de factorisation sur \mathbb{R} du style  x^2 - 5 = (x - √5)(x + √5)
 
     with st.form("verification_form"):
