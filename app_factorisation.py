@@ -84,7 +84,7 @@ def generer_polynome(niveau):
         a1 = 0
         while a1 == 0:
             a1 = random.randint(-5, 50)
-            a  = math.floor(a1/abs(a1)) # = \pm 1 avec ~90 % de chance d'être positif
+        a  = math.floor(a1/abs(a1)) # = \pm 1 avec ~90 % de chance d'être positif
         while r1 == 0 or r2 == 0 or r1 == -r2:
             r1 = random.randint(-7, 7)
             r2 = random.randint(-7, 7)
