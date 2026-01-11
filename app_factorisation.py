@@ -347,7 +347,6 @@ def verifier_factorisation(poly, user_str):
         if base != -1 and base != 1:
             true_factors.extend([base]*exp)
 
-    print("factors_user", factors_user, "\t", "true_factors", true_factors)
     if len(factors_user) < len(true_factors):
         return "incomplete"
     if len(factors_user) > len(true_factors) and not factors_user[0].is_integer:
