@@ -83,8 +83,8 @@ def generer_polynome(niveau):
     if niveau == 2:#"2 — Méthode somme-produit":
         a1 = 0
         while a1 == 0:
-            a1 = random.randint(-5, 40)
-        a  = math.floor(a1/abs(a1)) # = \pm 1 avec ~80 % de chance d'être positif
+            a1 = random.randint(-5, 30)
+        a  = math.floor(a1/abs(a1)) # = \pm 1 avec ~70 % de chance d'être positif
         while r1 == 0 or r2 == 0 or r1 == -r2:
             r1 = random.randint(-7, 7)
             r2 = random.randint(-7, 7)
