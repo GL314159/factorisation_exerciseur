@@ -443,7 +443,7 @@ if "polynome" in st.session_state:
     with st.form("verification_form"):
         # Saisie utilisateur (dans le form !)
         reponse = st.text_input(
-            label="Entrez la factorisation, par exemple : (x-2)(x+3)",
+            label="Entrez la factorisation, par exemple : -5x^2(x-2)(x+3)",
             key="reponse",
             #label_visibility="collapsed",
             disabled=already_corrected
