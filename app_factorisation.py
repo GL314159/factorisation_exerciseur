@@ -335,7 +335,7 @@ def verifier_factorisation(poly, user_str):
         return "invalid"
 
     # Vérifier équivalence globale
-    if sp.expand(expr_user) != sp.expand(poly):
+    if sp.expand(expr_user - poly) != 0:
         return "incorrect"
 
     factors_user = get_factors(expr_user)
