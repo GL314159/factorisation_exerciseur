@@ -1,3 +1,5 @@
+### cd "/Users/gauthier/Desktop/Général/TOUT/Enseignement/1M/1M - polynomes, factorisation, équations/>Application_streamlit_factorisation_exerciseur"
+
 import streamlit as st
 import random
 import sympy as sp
@@ -68,7 +70,7 @@ def generer_polynome(niveau):
     a = 0; r1 = 0; r2 = 0
     if niveau == 1:#"1 — Mise en évidence":
         while r1 == 0 or a == 0:
-            a  = random.randint(-5, 5)
+            a  = random.randint(-4, 6)
             d  = random.randint(1, 8)
             r1 = random.randint(-5, 5)
             e  = random.randint(0, 3)
@@ -83,8 +85,8 @@ def generer_polynome(niveau):
     if niveau == 2:#"2 — Méthode somme-produit":
         a1 = 0
         while a1 == 0:
-            a1 = random.randint(-5, 20)
-        a  = math.floor(a1/abs(a1)) # = \pm 1 avec ~80 % de chance d'être positif
+            a1 = random.randint(-5, 50)
+        a  = math.floor(a1/abs(a1)) # = \pm 1 avec ~90 % de chance d'être positif
         while r1 == 0 or r2 == 0 or r1 == -r2:
             r1 = random.randint(-7, 7)
             r2 = random.randint(-7, 7)
@@ -100,9 +102,9 @@ def generer_polynome(niveau):
                 poly = r1**2 - X**2
             if e in [2]:
                 poly = X**2 - r1**2
-            if e in [3, 4]:
+            if e in [3]:
                 poly = (X - r1)**2
-            if e in [5, 6]:
+            if e in [4, 5, 6]:
                 poly = (a*X - r1)**2
             if e in [7]:
                 poly = X**2 + r1**2
@@ -184,7 +186,7 @@ col1, col2, col3 = st.columns([1.1, 2.6, 1.3])
 with col1:
     st.markdown("**Choisissez un niveau**")
 with col2:
-    niveau = st.selectbox(" ", list(NIVEAUX.keys()))
+    niveau = st.selectbox(" ", list(NIVEAUX.keys()), label_visibility="hidden")
     niveau_nombre = NIVEAUX[niveau]
 
     if "niveau_precedent" not in st.session_state:
@@ -241,6 +243,13 @@ if previous_level and niveau != previous_level:
 
 # Générer nouvel exercice
 with col3:
+    st.markdown("""
+    <style>
+    div.stButton {
+        margin-top: -23px;
+    }
+    </style>
+    """, unsafe_allow_html=True)
     if st.button("➡️ Nouvelle question", disabled=st.session_state["question_num"] > NB_QUESTIONS):#question suivante
         st.session_state["tentatives"] = 0
         st.session_state["polynome"] = generer_polynome(niveau_nombre)
@@ -347,6 +356,7 @@ def verifier_factorisation(poly, user_str):
         if base != -1 and base != 1:
             true_factors.extend([base]*exp)
 
+    #print("factors_user", factors_user, "\t", "true_factors", true_factors)
     if len(factors_user) < len(true_factors):
         return "incomplete"
     if len(factors_user) > len(true_factors) and not factors_user[0].is_integer:
@@ -442,9 +452,9 @@ if "polynome" in st.session_state:
     with st.form("verification_form"):
         # Saisie utilisateur (dans le form !)
         reponse = st.text_input(
-            label="Entrez la factorisation, par exemple : -5x^2 (x-2)(x+3)",
+            "Entrez la factorisation, par exemple : (x-2)(x+3)",
             key="reponse",
-            #label_visibility="collapsed",
+            label_visibility="collapsed",
             disabled=already_corrected
         )
 
@@ -526,4 +536,3 @@ st.markdown(
     f"</div>",
     unsafe_allow_html=True
 )
-
